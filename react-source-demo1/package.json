@@ -1,10 +1,15 @@
 {
-  "name": "demo1",
+  "name": "react-source-demo1",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
+    "react": "link:./react/packages/react/",
+    "react-dom": "link:./react/packages/react-dom/",
+    "shared": "link:./react/packages/shared/",
+    "events": "link:./react/packages/events/",
+    "react-reconciler": "link:./react/packages/react-reconciler/",
+    "react-scheduler": "link:./react/packages/react-scheduler/",
+    "react-is": "link:./react/packages/react-is/",
     "react-scripts": "3.0.1"
   },
   "scripts": {
