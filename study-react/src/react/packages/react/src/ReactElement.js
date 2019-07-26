@@ -169,9 +169,9 @@ const ReactElement = function(type, key, ref, self, source, owner, props) {
  * See https://reactjs.org/docs/react-api.html#createelement
  */
 export function createElement(type, config, children) {
-  console.log('type:',type)
+  /* console.log('type:',type)
   console.log('config:',config)
-  console.log('children:',children)
+  console.log('children:',children) */
   let propName;
 
   // Reserved names are extracted
@@ -221,7 +221,8 @@ export function createElement(type, config, children) {
     props.children = childArray;
   }
 
-  // Resolve default props
+  // Resolve default props {resolve-default-props}
+  /* 如果没有传入props且设置了默认值的情况下，会进行赋值处理 */
   if (type && type.defaultProps) {
     const defaultProps = type.defaultProps;
     for (propName in defaultProps) {

@@ -1,13 +1,9 @@
-import React, { Component, Suspense, Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
-import {Comp} from './component.jsx';
-class App extends Component{
-    render(){
-        return(
-            <div id="app">this is react app!!!</div>
-        )
-    }
-}
-ReactDOM.render(<App tilte="welcome to react" className=""/>, document.getElementById('app'));
+import App from './App.jsx';
+import { HashRouter as Router } from 'react-router-dom'
+
+
+ReactDOM.render(<Router><App /></Router>, document.getElementById('app'));
 
 module.hot && module.hot.accept();

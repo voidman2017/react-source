@@ -669,7 +669,7 @@ const ReactDOM: Object = {
       callback,
     );
   },
-
+  /* react-dom.render */
   render(
     element: React$Element<any>,
     container: DOMContainer,

@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const webpackConfig = require('../webpack.config');
 const path = require('path');
-const port = 30001;
+const port = 1234;
 
 const express = require('express');
 const webpackDevMiddleware = require('webpack-dev-middleware');

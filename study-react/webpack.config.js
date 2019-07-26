@@ -16,6 +16,7 @@ let webpackConfig = {
         publicPath: '/'
     },
     resolve: {
+        extensions:[".js",".jsx"],
         alias: {
             'react': path.resolve(__dirname, './src/react/packages/react'),
             'react-dom': path.resolve(__dirname, './src/react/packages/react-dom'),
@@ -38,7 +39,15 @@ let webpackConfig = {
                     "@babel/plugin-proposal-class-properties",
                 ]
             }
-        }]
+        },
+        {
+            test: /\.(css)$/,
+            use:[
+                'style-loader',
+                'css-loader'
+            ]
+        }
+    ]
     },
     plugins: [
         new HtmlWebpackPlugin({
