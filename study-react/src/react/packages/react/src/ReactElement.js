@@ -111,6 +111,7 @@ function defineRefPropWarningGetter(props, displayName) {
 const ReactElement = function(type, key, ref, self, source, owner, props) {
   const element = {
     // This tag allows us to uniquely identify this as a React Element
+    /* 用来标识 element 的类型 */
     $$typeof: REACT_ELEMENT_TYPE,
 
     // Built-in properties that belong on the element
@@ -183,9 +184,11 @@ export function createElement(type, config, children) {
   let source = null;
 
   if (config != null) {
+    /* 获取 ref 属性值 */
     if (hasValidRef(config)) {
       ref = config.ref;
     }
+    /* 获取 key 值 */
     if (hasValidKey(config)) {
       key = '' + config.key;
     }
@@ -193,6 +196,9 @@ export function createElement(type, config, children) {
     self = config.__self === undefined ? null : config.__self;
     source = config.__source === undefined ? null : config.__source;
     // Remaining properties are added to a new props object
+    /* 循环遍历 config，判断是否是内建的 props{ key, ref, _self, _source } ，将非内建的 props 添加至 props 对象中 
+      所以为什么在 react 组件中无法使用 this.props.ref 或者 this.props.key 获取到设置的 ref 和 key。
+    */
     for (propName in config) {
       if (
         hasOwnProperty.call(config, propName) &&
@@ -205,6 +211,7 @@ export function createElement(type, config, children) {
 
   // Children can be more than one argument, and those are transferred onto
   // the newly allocated props object.
+  /* Children可以是多个的，当传入多个参数的时候，通过判断参数的个数，将从第三个参数开始之后的所有参数作为children添加到数组中 */
   const childrenLength = arguments.length - 2;
   if (childrenLength === 1) {
     props.children = children;

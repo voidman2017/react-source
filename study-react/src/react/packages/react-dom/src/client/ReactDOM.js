@@ -496,6 +496,7 @@ function legacyCreateRootFromDOMContainer(
   container: DOMContainer,
   forceHydrate: boolean,
 ): Root {
+  /* 判断是否需要合并（在服务端渲染的时候需要进行合并），首先清除container下任何现有内容 */
   const shouldHydrate =
     forceHydrate || shouldHydrateDueToLegacyHeuristic(container);
   // First clear any existing content.
@@ -551,6 +552,7 @@ function legacyRenderSubtreeIntoContainer(
   // TODO: Without `any` type, Flow says "Property cannot be accessed on any
   // member of intersection type." Whyyyyyy.
   let root: Root = (container._reactRootContainer: any);
+  /* 初次渲染是 container._reactRootContainer 是不存在的 */
   if (!root) {
     // Initial mount
     root = container._reactRootContainer = legacyCreateRootFromDOMContainer(
@@ -669,7 +671,7 @@ const ReactDOM: Object = {
       callback,
     );
   },
-  /* react-dom.render */
+  /* {#reactDOM.render} */
   render(
     element: React$Element<any>,
     container: DOMContainer,

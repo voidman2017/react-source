@@ -4,7 +4,6 @@ export default class RefDemo extends React.Component {
   constructor() {
     super()
     this.objRef = React.createRef()
-
     // { current: null }
   }
 
